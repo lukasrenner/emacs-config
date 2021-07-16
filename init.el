@@ -85,10 +85,69 @@
 
 (global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
 
+<<<<<<< Updated upstream
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
+
+
+;; projectile
+(use-package projectile
+  :init
+  (setq projectile-keymap-prefix (kbd "C-c p")))
+
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+(define-key projectile-mode-map (kbd "s-,") 'projectile-command-map)
+(setq projectile-project-search-path '("~/Programming/ESP32/"))
+
+;;enable ASNSI-colors in compilation buffer
+(require 'ansi-color)
+(defun endless/colorize-compilation ()
+  "Colorize from `compilation-filter-start' to `point'."
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region
+     compilation-filter-start (point))))
+
+(add-hook 'compilation-filter-hook
+          #'endless/colorize-compilation)
+>>>>>>> Stashed changes
+||||||| constructed merge base
+;(use-package doom-modeline
+ ; :ensure t
+  ;:init (doom-modeline-mode 1)
+;  :custom ((doom-modeline-height 15)))
+=======
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1)
+  :custom ((doom-modeline-height 15)))
+
+
+;; projectile
+(use-package projectile
+  :init
+  (setq projectile-keymap-prefix (kbd "C-c p")))
+
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+(define-key projectile-mode-map (kbd "s-,") 'projectile-command-map)
+(setq projectile-project-search-path '("~/Programming/ESP32/"))
+
+;;enable ASNSI-colors in compilation buffer
+(require 'ansi-color)
+(defun endless/colorize-compilation ()
+  "Colorize from `compilation-filter-start' to `point'."
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region
+     compilation-filter-start (point))))
+
+(add-hook 'compilation-filter-hook
+          #'endless/colorize-compilation)
+>>>>>>> Stashed changes
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -96,7 +155,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(counsel ivy-rich which-key rainbow-delimiters swiper use-package ivy doom-modeline command-log-mode)))
+   '(magit counsel-projectile projectile platformio-mode counsel ivy-rich which-key rainbow-delimiters swiper use-package ivy doom-modeline command-log-mode))
+ '(safe-local-variable-values '((TeX-master . t))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
