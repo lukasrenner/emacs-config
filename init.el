@@ -85,10 +85,10 @@
 
 (global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
 
-;(use-package doom-modeline
- ; :ensure t
-  ;:init (doom-modeline-mode 1)
-;  :custom ((doom-modeline-height 15)))
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1)
+  :custom ((doom-modeline-height 15)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
