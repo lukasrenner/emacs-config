@@ -85,7 +85,7 @@
 
 (global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
 
-<<<<<<< Updated upstream
+
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
@@ -113,13 +113,7 @@
 
 (add-hook 'compilation-filter-hook
           #'endless/colorize-compilation)
->>>>>>> Stashed changes
-||||||| constructed merge base
-;(use-package doom-modeline
- ; :ensure t
-  ;:init (doom-modeline-mode 1)
-;  :custom ((doom-modeline-height 15)))
-=======
+
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
@@ -147,7 +141,21 @@
 
 (add-hook 'compilation-filter-hook
           #'endless/colorize-compilation)
->>>>>>> Stashed changes
+
+;; CCLS
+(use-package lsp-ui :commands lsp-ui-mode)
+(use-package ccls
+  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+         (lambda () (require 'ccls) (lsp))))
+(require 'ccls)
+(setq ccls-executable "/usr/bin/ccls")
+(setq ccls-args '("--log-file=/tmp/ccls.log"))
+
+(setq lsp-prefer-flymake nil)
+
+
+
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -155,7 +163,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(magit counsel-projectile projectile platformio-mode counsel ivy-rich which-key rainbow-delimiters swiper use-package ivy doom-modeline command-log-mode))
+   '(company lsp-mode ccls flycheck lsp-ui magit counsel-projectile projectile platformio-mode counsel ivy-rich which-key rainbow-delimiters swiper use-package ivy doom-modeline command-log-mode))
  '(safe-local-variable-values '((TeX-master . t))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
