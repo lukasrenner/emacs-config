@@ -119,29 +119,6 @@
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
 
-
-;; projectile
-(use-package projectile
-  :init
-  (setq projectile-keymap-prefix (kbd "C-c p")))
-
-(projectile-mode +1)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-
-(define-key projectile-mode-map (kbd "s-,") 'projectile-command-map)
-(setq projectile-project-search-path '("~/Programming/ESP32/"))
-
-;;enable ASNSI-colors in compilation buffer
-(require 'ansi-color)
-(defun endless/colorize-compilation ()
-  "Colorize from `compilation-filter-start' to `point'."
-  (let ((inhibit-read-only t))
-    (ansi-color-apply-on-region
-     compilation-filter-start (point))))
-
-(add-hook 'compilation-filter-hook
-          #'endless/colorize-compilation)
-
 ;; CCLS
 (use-package lsp-ui :commands lsp-ui-mode)
 (use-package ccls
